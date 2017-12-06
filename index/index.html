@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Home | 让支教在我们身边</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free Bootstrap Business Template">
+    <meta name="author" content="The Develovers">
+    <!-- CSS -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/main.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/my-custom-styles.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/hzw-city-picker.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/drag.css" rel="stylesheet">
+    <!-- IE 9 Fallback-->
+    <!--[if IE 9]>
+    <link href="assets/css/ie.css" rel="stylesheet">
+    <![endif]-->
+    <!-- GOOGLE FONTS -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400italic,400,600,700' rel='stylesheet' type='text/css'>
+
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,300italic,400italic,700,400,300' rel='stylesheet' type='text/css'>
+    <!-- FAVICONS -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/repute144x144.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/repute114x114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/repute72x72.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/repute57x57.png">
+    <link rel="shortcut icon" href="assets/ico/favicon.png">
+</head>
+
+<body>
+<!--模态框_注册-->
+<div class="modal fade" id="myModal_sign" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">
+                    注册页面
+                </h4>
+            </div>
+            <div class="modal-body" style="left: 60px;">
+                <div class="input-group">
+                    <div class="form-group" style="font-size: 15px;">
+                        <label>用户名：</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="text" name="" value="" placeholder="4-8位用户名" class="reg_user">
+                        <span class="tip user_hint"></span>
+                        <br><br>
+                        <label>密 &nbsp;&nbsp;码 ：</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="password" name="" value="" placeholder="6-16位密码" class="reg_password">
+                        <span class="tip password_hint"></span>
+                        <br><br>
+                        <label style="">确认密码：</label>
+                        <input type="password" name="" value="" placeholder="确认密码" class="reg_confirm">
+                        <span class="tip confirm_hint"></span>
+                        <br><br>
+                        <label>邮 &nbsp;&nbsp;箱：</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="text" name="" value="" placeholder="邮箱" class="reg_email">
+                        <span class="tip email_hint"></span>
+                        <br><br>
+                        <label>手机号码：</label>
+                        <input type="email" name="" value="" placeholder="手机号" class="reg_mobile">
+                        <span class="tip mobile_hint"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+                <button type="button" class="btn btn-primary red_button" id="add_score">
+                    注册
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<!--模态框_登录-->
+<div class="modal fade" id="myModal_log" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" >
+                    登录界面
+                </h4>
+            </div>
+            <div class="modal-body" style="left: 60px;">
+                <div class="input-group">
+                    <div class="form-group" style="font-size: 15px;">
+                        <label>用户名：</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="text" name="" value="" placeholder="4-8位用户名" class="log_user" >
+                        <span class="tip user_hint_log"></span>
+                        <br><br>
+                        <label>密 &nbsp;&nbsp;码 ：</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="password" name="" value="" placeholder="6-16位密码" class="log_password">
+                        <span class="tip password_hint_log"></span>
+                        <br><br>
+                        <div id="drag" style="display: flex;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+                <button type="button" class="btn btn-primary" id="add_score">
+                    登录
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<!-- WRAPPER -->
+<div class="wrapper" style="margin-top: 100px;">
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-default  navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav">
+                    <span class="sr-only">Toggle Navigation</span>
+                    <i class="fa fa-bars"></i>
+                </button>
+
+                <a href="#" class="navbar-brand navbar-logo">
+                    <img src="assets/img/logo/repute-logo-nav.png">
+                </a>
+                <span style="font-size: 20px; margin-top: 10px;display: flex;">支教在身边<span style="font-size: 11px;margin-top: 12px">————让<b style="color: crimson;">爱</b>传<b style="color:darkgreen">播</b></span></span>
+
+                <!--<p class="navbar-text navbar-right"><span style="font-size: 20px;top: 5px;">支教在身边</span></p>-->
+            </div>
+            <!-- MAIN NAVIGATION -->
+            <div id="main-nav" class="navbar-collapse collapse navbar-mega-menu">
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li> <input type="text"  placeholder="选择城市" style="margin-top: 13px; " id="cityChoice"></li>
+                    &nbsp;<li id="cityfind"><a href="#" class="dropdown-toggle" data-toggle="dropdown" title="点击查看当下城市社团信息">点击查看</a></li>
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">用户按钮<i class="fa fa-angle-down"></i></a>
+
+                        <ul class="dropdown-menu" role="menu">
+
+                            <li><a href="#" onclick="sign_up()">注册用户</a></li>
+                            <li><a href="#" onclick="log_in()">登录</a></li>
+                        </ul>
+                    </li>
+                    <p class="navbar-text">Welcome ！<span id="log_in_name">林灵</span></p>
+                </ul>
+            </div>
+            <!-- END MAIN NAVIGATION -->
+        </div>
+    </nav>
+
+    <!-- END NAVBAR -->
+    <!-- HERO UNIT -->
+    <section class="hero-unit-slider slider-responsive no-margin">
+        <div id="carousel-hero" class="slick-carousel">
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <img src="assets/img/sliders/C-2.png" class="img-responsive" alt="Slider Image">
+                    <div class="carousel-caption">
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="assets/img/sliders/C-1.png" class="img-responsive" alt="Slider Image">
+
+                </div>
+                <div class="item">
+                    <img src="assets/img/sliders/C-3.png" class="img-responsive" alt="Slider Image">
+                    <div class="carousel-caption">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END HERO UNIT -->
+    <br><br>
+    <!-- INTRO -->
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2 class="section-heading">支教的风景</h2>
+                    <p class="lead">人生繁华泡如影，无意浮沉荣辱时。回首驻望浮生梦，不负红尘得失间。</p>
+                    <p>还记得队伍在校碑门口集合等待出发的时候。那时，行李都堆在一起，红的黄的一起，明亮而耀眼的光彩，正如青春时刻这说去就去的支教，彩虹一样的憧憬和期待。三个国防生绿色的军用背包分外显眼，沉甸甸的背包，装的是沉甸甸的梦想。支教的梦，给富厚的孩子们带去绿色的欢乐与希望的梦。橄榄绿的梦。天空飘了一点点小雨，好几把伞却已经撑在了我们给富厚的孩子们买的一摞摞书上。人可以淋湿，书不能淋湿。而现在，学校门口送别的鞭炮已经响过，烟雾缭绕中，我们带不走的，还是那颗惦念的心。</p>
+                    <p>笑得放肆，跑得欢畅。临别的时候，也偷偷地哭了。美好而残忍的孩子们，是你们给我上了一堂最生动的课。是你们让我更接近一个本真的人，接近自己的意义和价值。</p>
+                    <p>支教带给你的，是爱。</p>
+                </div>
+                <div class="col-md-6">
+                    <img src="assets/img/intro-img.png" class="img-responsive" alt="Image Intro">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END INTRO -->
+
+
+
+
+
+    <!-- LATEST NEWS -->
+    <section >
+        <div class="container">
+            <h2 class="section-heading">近闻——爱<a id="click_upload" class="btn btn-danger pull-right">点击上传新闻</a>
+            </h2>
+
+            <div class="row" id="append">
+                <div class="col-md-4">
+                    <div class="news-item news-featured">
+                        <a href="#"><img src="assets/img/news/featured-news.png" class="img-responsive" alt="News Thumbnail"></a>
+                        <h3 class="news-title"><a href="#">In Demand: Collaboration Skill</a></h3>
+                        <p>Proactively engage orthogonal growth strategies without resource-leveling testing procedures. Seamlessly predominate interoperable growth strategies procedures. Seamlessly predominate interoperable growth strategie procedures. Seamlessly predominate interoperable growth strategie.</p>
+                        <div class="news-meta">
+                            <span class="news-datetime">23-02-2015</span>
+                            <span class="news-comment-count pull-right"><a href="#">65 Comments</a></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <div class="news-item margin-bottom-30px clearfix">
+                                <a href="#"><img src="assets/img/news/news1.png" class="img-responsive pull-left" alt="News Thumbnail"></a>
+                                <div class="right">
+                                    <h3 class="news-title"><a href="#">Growth Strategies We Must Know</a></h3>
+                                    <p>Proactively engage orthogonal growth strategies without resource-leveling testing procedures.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="news-item margin-bottom-30px clearfix">
+                                <a href="#"><img src="assets/img/news/news2.png" class="img-responsive pull-left" alt="News Thumbnail"></a>
+                                <div class="right">
+                                    <h3 class="news-title"><a href="#">Alternative E-commerce</a></h3>
+                                    <p>Proactively engage orthogonal growth strategies without resource-leveling testing procedures.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="news-item margin-bottom-30px clearfix">
+                                <a href="#"><img src="assets/img/news/news3.png" class="img-responsive pull-left" alt="News Thumbnail"></a>
+                                <div class="right">
+                                    <h3 class="news-title"><a href="#">Products Research Methodology &amp; Principles </a></h3>
+                                    <p>Proactively engage orthogonal growth strategies without resource-leveling testing procedures.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="news-item margin-bottom-30px clearfix">
+                                <a href="#"><img src="assets/img/news/news4.png" class="img-responsive pull-left" alt="News Thumbnail"></a>
+                                <div class="right">
+                                    <h3 class="news-title"><a href="#">Understanding Globally Scale Quality Network</a></h3>
+                                    <p>Proactively engage orthogonal growth strategies without resource-leveling testing procedures.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="news-item margin-bottom-30px clearfix">
+                                <a href="#"><img src="assets/img/news/news5.png" class="img-responsive pull-left" alt="News Thumbnail"></a>
+                                <div class="right">
+                                    <h3 class="news-title"><a href="#">Professional Leverage</a></h3>
+                                    <p>Proactively engage orthogonal growth strategies without resource-leveling testing procedures.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="news-item margin-bottom-30px clearfix">
+                                <a href="#"><img src="assets/img/news/news5.png" class="img-responsive pull-left" alt="News Thumbnail"></a>
+                                <div class="right">
+                                    <h3 class="news-title"><a href="#">Professional Leverage</a></h3>
+                                    <p>Proactively engage orthogonal growth strategies without resource-leveling testing procedures.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="col-md-12">-->
+                <!--<div class="row">-->
+                <!--<div class="col-md-4">-->
+                <!--<div class="news-item margin-bottom-30px clearfix">-->
+                <!--<a href="#"><img src="assets/img/news/news1.png" class="img-responsive pull-left" alt="News Thumbnail"></a>-->
+                <!--<div class="right">-->
+                <!--<h3 class="news-title"><a href="#">Growth Strategies We Must Know</a></h3>-->
+                <!--<p>Proactively engage orthogonal growth strategies without resource-leveling testing procedures.</p>-->
+                <!--</div>-->
+                <!--</div>-->
+
+                <!--</div>-->
+                <!--<div class="col-md-4">-->
+                <!--<div class="news-item margin-bottom-30px clearfix">-->
+                <!--<a href="#"><img src="assets/img/news/news1.png" class="img-responsive pull-left" alt="News Thumbnail"></a>-->
+                <!--<div class="right">-->
+                <!--<h3 class="news-title"><a href="#">Growth Strategies We Must Know</a></h3>-->
+                <!--<p>Proactively engage orthogonal growth strategies without resource-leveling testing procedures.</p>-->
+                <!--</div>-->
+                <!--</div>-->
+
+                <!--</div>-->
+                <!--<div class="col-md-4">-->
+                <!--<div class="news-item margin-bottom-30px clearfix">-->
+                <!--<a href="#"><img src="assets/img/news/news1.png" class="img-responsive pull-left" alt="News Thumbnail"></a>-->
+                <!--<div class="right">-->
+                <!--<h3 class="news-title"><a href="#">Growth Strategies We Must Know</a></h3>-->
+                <!--<p>Proactively engage orthogonal growth strategies without resource-leveling testing procedures.</p>-->
+                <!--</div>-->
+                <!--</div>-->
+
+                <!--</div>-->
+                <!--<div class="col-md-4">-->
+                <!--<div class="news-item margin-bottom-30px clearfix">-->
+                <!--<a href="#"><img src="assets/img/news/news1.png" class="img-responsive pull-left" alt="News Thumbnail"></a>-->
+                <!--<div class="right">-->
+                <!--<h3 class="news-title"><a href="#">Growth Strategies We Must Know</a></h3>-->
+                <!--<p>Proactively engage orthogonal growth strategies without resource-leveling testing procedures.</p>-->
+                <!--</div>-->
+                <!--</div>-->
+
+                <!--</div>-->
+                <!--<div class="col-md-4">-->
+                <!--<div class="news-item margin-bottom-30px clearfix">-->
+                <!--<a href="#"><img src="assets/img/news/news1.png" class="img-responsive pull-left" alt="News Thumbnail"></a>-->
+                <!--<div class="right">-->
+                <!--<h3 class="news-title"><a href="#">Growth Strategies We Must Know</a></h3>-->
+                <!--<p>Proactively engage orthogonal growth strategies without resource-leveling testing procedures.</p>-->
+                <!--</div>-->
+                <!--</div>-->
+
+                <!--</div>-->
+
+                <!--</div>-->
+                <!--</div>-->
+            </div>
+            <div class="col-md-12 col-sm-12 add-news" >
+                <div class="see-all-news">
+                    <a>See all news <i class="fa fa-long-arrow-right"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </section >
+    <!-- END LATEST NEWS -->
+    <!-- RECENT WORKS -->
+    <section class="recent-works">
+        <div class="container">
+            <h2 class="section-heading pull-left">方法学习</h2>
+            <a href="#" class="btn btn-primary pull-right">More技巧</a>
+            <div class="clearfix"></div>
+            <div class="portfolio-static">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="portfolio-item">
+                            <div class="overlay"></div>
+                            <div class="info">
+                                <h4 class="title">专业课程</h4>
+                                <p class="brief-description">视频、文章</p>
+                                <a href="#" class="btn">read more</a>
+                            </div>
+                            <div class="media-wrapper">
+                                <img src="assets/img/portfolio/800x500/work5.png" alt="Item Thumbnail" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="portfolio-item">
+                            <div class="overlay"></div>
+                            <div class="info">
+                                <h4 class="title">体育课程</h4>
+                                <p class="brief-description">视频、方法</p>
+                                <a href="#" class="btn">read more</a>
+                            </div>
+                            <div class="media-wrapper">
+                                <img src="assets/img/portfolio/800x500/work6.png" alt="Item Thumbnail" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="portfolio-item">
+                            <div class="overlay"></div>
+                            <div class="info">
+                                <h4 class="title">美术、心里</h4>
+                                <p class="brief-description">图片、视频</p>
+                                <a href="#" class="btn">read more</a>
+                            </div>
+                            <div class="media-wrapper">
+                                <img src="assets/img/portfolio/800x500/work7.png" alt="Item Thumbnail" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END RECENT WORKS -->
+    <!-- TESTIMONIAL -->
+    <section id="testimoial-parallax" class="testimonial-with-bg parallax">
+        <div class="container">
+            <div class="testimonial slick-carousel">
+                <div class="testimonial-container">
+                    <div class="testimonial-body">
+                        <p>Credibly extend parallel relationships after clicks-and-mortar content. Credibly pontificate team building alignments rather than diverse quality vectors.</p>
+                        <div class="testimonial-author">
+                            <img src="assets/img/user2.png" alt="Author" class="pull-left">
+                            <span><span class="author-name">Antonius</span> <em>CEO of TheCompany</em></span>
+                        </div>
+                    </div>
+                    <div class="testimonial-body">
+                        <p>Credibly pontificate team building alignments rather than diverse quality vectors. Monotonectally benchmark business communities for distinctive mindshare.</p>
+                        <div class="testimonial-author">
+                            <img src="assets/img/user1.png" alt="Author" class="pull-left">
+                            <span><span class="author-name">Michael</span> <em>General Manager of DreamCorp</em></span>
+                        </div>
+                    </div>
+                    <div class="testimonial-body">
+                        <p>Appropriately morph low-risk high-yield process improvements through progressive partnerships. Uniquely brand enabled. Globally network timely imperatives without plug-and-play schemas.</p>
+                        <div class="testimonial-author">
+                            <img src="assets/img/user5.png" alt="Author" class="pull-left">
+                            <span><span class="author-name">Palmer</span> <em>Freelance Web Developer</em></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END TESTIMONIAL -->
+    <!-- OUR CLIENTS -->
+
+    <footer>
+
+        <!-- COPYRIGHT -->
+        <div class="text-center copyright">
+            <a href="#" target="_blank" title="模板之家">矿大暑期实践</a> - Create By——Pinging Group
+        </div>
+        <!-- END COPYRIGHT -->
+    </footer>
+    <!-- END FOOTER -->
+</div>
+<!-- END WRAPPER -->
+<!-- JAVASCRIPTS -->
+
+<script src="assets/js/jquery-2.1.1.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/plugins/slick/slick.min.js"></script>
+<script src="assets/js/plugins/stellar/jquery.stellar.min.js"></script>
+<script src="assets/js/repute-scripts.js"></script>
+<script src="assets/js/city-data.js"></script>
+<script src="assets/js/hzw-city-picker.min.js"></script>
+<script src="assets/js/drag.js"></script>
+
+<!--模态框-->
+<script>
+    function sign_up(obj) {
+        $('#myModal_sign').modal('show');
+    }
+    function log_in(obj) {
+        $('#myModal_log').modal('show');
+    }
+</script>
+<!--城市选择框-->
+<script>
+    var cityPicker = new HzwCityPicker({
+        data: data,
+        target: 'cityChoice',
+        valType: 'k-v',
+        hideCityInput: {
+            name: 'city',
+            id: 'city'
+
+
+        },
+        hideProvinceInput: {
+            name: 'province',
+            id: 'province'
+        },
+        callback: function(){
+
+        }
+    });
+
+    cityPicker.init();
+</script>
+<!--注册页面-->
+<script>
+    // user
+    var user_Boolean = false;
+    var password_Boolean = false;
+    var varconfirm_Boolean = false;
+    var emaile_Boolean = false;
+    var Mobile_Boolean = false;
+    $('.reg_user').blur(function(){
+        if ((/^[a-z0-9_-]{4,8}$/).test($(".reg_user").val())){
+            $('.user_hint').html("✔").css("color","green");
+            user_Boolean = true;
+        }else {
+            $('.user_hint').html("×").css("color","red");
+            user_Boolean = false;
+        }
+    });
+    // password
+    $('.reg_password').blur(function(){
+        if ((/^[a-z0-9_-]{6,16}$/).test($(".reg_password").val())){
+            $('.password_hint').html("✔").css("color","green");
+            password_Boolean = true;
+        }else {
+            $('.password_hint').html("×").css("color","red");
+            password_Boolean = false;
+        }
+    });
+
+
+    // password_confirm
+    $('.reg_confirm').blur(function(){
+        if (($(".reg_password").val())==($(".reg_confirm").val())&&$(".reg_password").val()!=''){
+            $('.confirm_hint').html("✔").css("color","green");
+            varconfirm_Boolean = true;
+        }else {
+            $('.confirm_hint').html("×").css("color","red");
+            varconfirm_Boolean = false;
+        }
+    });
+
+
+    // Email
+    $('.reg_email').blur(function(){
+        if ((/^[a-z\d]+(\.[a-z\d]+)*@([\da-z](-[\da-z])?)+(\.{1,1}[a-z]+)+$/).test($(".reg_email").val())){
+            $('.email_hint').html("✔").css("color","green");
+            emaile_Boolean = true;
+        }else {
+            $('.email_hint').html("×").css("color","red");
+            emaile_Boolean = false;
+        }
+    });
+
+
+    // Mobile
+    $('.reg_mobile').blur(function(){
+        if ((/^1[34578]\d{9}$/).test($(".reg_mobile").val())){
+            $('.mobile_hint').html("✔").css("color","green");
+            Mobile_Boolean = true;
+        }else {
+            $('.mobile_hint').html("×").css("color","red");
+            Mobile_Boolean = false;
+        }
+    });
+
+
+    // click
+    $('.red_button').click(function(){
+        if(user_Boolean && password_Boolean && varconfirm_Boolean && emaile_Boolean && Mobile_Boolean == true){
+            alert("注册成功");
+            $('#myModal_sign').modal('hide');
+
+
+        }else {
+            alert("请完善信息");
+        }
+    });
+
+</script>
+<!--登录界面-->
+<script>
+    var user_Bool = false;
+    var password_Bool = false;
+    $('.log_user').blur(function(){
+        if ((/^[a-z0-9_-]{4,8}$/).test($(".log_user").val())){
+            $('.user_hint_log').html("✔").css("color","green");
+            user_Bool = true;
+        }else {
+            $('.user_hint_log').html("×").css("color","red");
+            user_Bool = false;
+        }
+    });
+    $('.log_password').blur(function(){
+        if ((/^[a-z0-9_-]{6,16}$/).test($(".log_password").val())){
+            $('.password_hint_log').html("✔").css("color","green");
+            password_Boolean = true;
+        }else {
+            $('.password_hint_log').html("×").css("color","red");
+            password_Boolean = false;
+        }
+    });
+</script>
+<!--下滑模块-->
+<script>
+    $('#drag').drag();
+</script>
+<script>
+    $(".add-news").click(function () {
+        var modal = "  <div class='col-md-12'><div class='row'>              <div class='col-md-4'><div class='news-item margin-bottom-30px clearfix'><a href='#'><img src='assets/img/news/news1.png' class='img-responsive pull-left' alt='News Thumbnail'></a>  <div class='right'><h3 class='news-title'><a href='#'>rowth Strategies We Must Know</a></h3><p>Proactively engage orthogonal growth strategies without resource-leveling testing procedures.</p> </div></div></div>               </div></div>";
+        $("#append").append(modal);
+        $(".add-news").css("display", "none");
+    });
+</script>
+<script>
+    $("#click_upload").click(function () {
+        var content = $("#log_in_name").text();
+        if(content != '')
+        {window.location.href="load.html";}
+        else {alert("请先登录！")}
+    });
+</script>
+<script>
+    $("#cityfind").click(function () {
+//        alert($("#cityChoice").val());
+        if ($("#cityChoice").val()=='徐州市')
+        {window.location.href='city_group.html';}
+    });
+</script>
+</body>
+
+</html>

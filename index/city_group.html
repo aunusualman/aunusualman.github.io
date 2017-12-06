@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Home | 城市支教团</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free Bootstrap Business Template">
+    <!-- CSS -->
+    <link href="css/demo.css" rel="stylesheet">
+    <link href="css/normalize.css" rel="stylesheet">
+    <link href="assets/css/drag.css" rel="stylesheet">
+    <link href="assets/css/hzw-city-picker.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/main.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/my-custom-styles.css" rel="stylesheet" type="text/css">
+    <!-- IE 9 Fallback-->
+    <!--[if IE 9]>
+		<link href="assets/css/ie.css" rel="stylesheet">
+	<![endif]-->
+    <!-- GOOGLE FONTS -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400italic,400,600,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,300italic,400italic,700,400,300' rel='stylesheet' type='text/css'>
+    <!-- FAVICONS -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/repute144x144.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/repute114x114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/repute72x72.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/repute57x57.png">
+    <link rel="shortcut icon" href="assets/ico/favicon.png">
+</head>
+
+<body>
+<!--模态框_注册-->
+<div class="modal fade" id="myModal_sign" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">
+                    注册页面
+                </h4>
+            </div>
+            <div class="modal-body" style="left: 60px;">
+                <div class="input-group">
+                    <div class="form-group" style="font-size: 15px;">
+                        <label>用户名：</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="text" name="" value="" placeholder="4-8位用户名" class="reg_user">
+                        <span class="tip user_hint"></span>
+                        <br><br>
+                        <label>密 &nbsp;&nbsp;码 ：</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="password" name="" value="" placeholder="6-16位密码" class="reg_password">
+                        <span class="tip password_hint"></span>
+                        <br><br>
+                        <label style="">确认密码：</label>
+                        <input type="password" name="" value="" placeholder="确认密码" class="reg_confirm">
+                        <span class="tip confirm_hint"></span>
+                        <br><br>
+                        <label>邮 &nbsp;&nbsp;箱：</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="text" name="" value="" placeholder="邮箱" class="reg_email">
+                        <span class="tip email_hint"></span>
+                        <br><br>
+                        <label>手机号码：</label>
+                        <input type="email" name="" value="" placeholder="手机号" class="reg_mobile">
+                        <span class="tip mobile_hint"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+                <button type="button" class="btn btn-primary red_button" id="add_score">
+                    注册
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<!--模态框_登录-->
+<div class="modal fade" id="myModal_log" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" >
+                    登录界面
+                </h4>
+            </div>
+            <div class="modal-body" style="left: 60px;">
+                <div class="input-group">
+                    <div class="form-group" style="font-size: 15px;">
+                        <label>用户名：</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="text" name="" value="" placeholder="4-8位用户名" class="log_user" >
+                        <span class="tip user_hint_log"></span>
+                        <br><br>
+                        <label>密 &nbsp;&nbsp;码 ：</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="password" name="" value="" placeholder="6-16位密码" class="log_password">
+                        <span class="tip password_hint_log"></span>
+                        <br><br>
+                        <div id="drag" style="display: flex;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+                <button type="button" class="btn btn-primary" id="add_score">
+                    登录
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+
+
+
+    <!-- WRAPPER -->
+    <div class="wrapper">
+
+        <nav class="navbar navbar-default  navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav">
+                        <span class="sr-only">Toggle Navigation</span>
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <a href="#" class="navbar-brand navbar-logo">
+                        <img src="assets/img/logo/repute-logo-nav.png">
+                    </a>
+                    <span style="font-size: 20px; margin-top: 10px;display: flex;">支教在身边<span style="font-size: 11px;margin-top: 12px">————让<b style="color: crimson;">爱</b>传<b style="color:darkgreen">播</b></span></span>
+
+                    <!--<p class="navbar-text navbar-right"><span style="font-size: 20px;top: 5px;">支教在身边</span></p>-->
+                </div>
+                <!-- MAIN NAVIGATION -->
+                <div id="main-nav" class="navbar-collapse collapse navbar-mega-menu">
+                    <ul class="nav navbar-nav navbar-right">
+
+                        <li> <input type="text"  placeholder="选择城市" style="margin-top: 13px; " id="cityChoice"></li>
+                        &nbsp;
+                        <li class="dropdown active">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">用户按钮<i class="fa fa-angle-down"></i></a>
+
+                            <ul class="dropdown-menu" role="menu">
+
+                                <li><a href="#" onclick="sign_up()">注册用户</a></li>
+                                <li><a href="#" onclick="log_in()">登录</a></li>
+                            </ul>
+                        </li>
+                        <p class="navbar-text">Welcome ！<span id="log_in_name">徐嘉宾</span></p>
+                    </ul>
+                </div>
+                <!-- END MAIN NAVIGATION -->
+            </div>
+        </nav>
+
+
+
+
+        <!--图片轮播-->
+        <br><br><br>
+
+        <!-- BREADCRUMBS -->
+        <div class="page-header">
+            <div class="container">
+                <h1 class="page-title pull-left"></h1>
+                <ol class="breadcrumb">
+                    <li><a href="#">主页</a></li>
+                    <li class="active" id="city_name">徐州市</li>
+                </ol>
+            </div>
+        </div>
+        <!-- END BREADCRUMBS -->
+
+
+        <!-- INTRO -->
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1 class="section-heading">心灵之约支教团</h1>
+                        <p class="lead">人生繁华泡如影，无意浮沉荣辱时。回首驻望浮生梦，不负红尘得失间。</p>
+                        <p>生的道路虽然漫长，但紧要处常常只有几步，特别是当人年轻的时候。没有一个人的生活道路是笔直的、没有岔道的，有些岔道口，譬如政治上的岔道口，个人生活上的岔道口，你走错一步，可以影响人生的一个时期，也可以影响一生。大多数人认为，支教志愿者如同福音般地为大山深处的孩子们点亮希望，为他们指明前行的方向，但本片的支教故事恰好相反，朴实的孩子们教会主人公放下功利，真诚地生活。这群可爱的孩子们，就像是她的指南针，当她在人生道路上迷路时，为她指引前进的方向。《迷路的孩子》讲述的是女大学生秋恬在山村支教时的一段心路历程：山村孩童的纯朴与善良深深触动了秋恬的心灵，让她对人生、对教育有了一个全新的认识，她由此找到了曾经迷失的心路。</p>
+                        <p>“我不想说再见，要把时光留住在今天。一生中能有几个这样的经历，一辈子能有几次不想说再见。。。” 时间如梭，转眼间已经来到支教地两周了，下周的这个时候我们应该在泸沽镇火车站候车了。
+                            现在，每一天的生活都是那么的有节奏，有规律。早起，上课，做饭，开会。。。每天都在为自己的梦想而努力，每天都在为了传授知识而努力，一切都是那么的协调，如果一切允许，真的就想这么协调下去。目前，我知道，我们不可能这么下去。留给我们的时间，只有一周了。我还没认识所有的孩子，却不敢再多接触，只怕离别太伤痛；我还没走遍这里的很多地方，却也无暇去领略，只怕沉醉在美丽的大凉山。
+                            在剩下来不多的日子里，我还会更加努力，做的更多，更好。在美丽的地方，留下我们的身影。到以后，回想今天，我们可以说道：“一群大学生，在一个陌生的农村，用自己的行动影响身边的孩子，尽情挥洒自己的热情。用自己微弱的力量，影响一部分孩子，尽管力量微弱，但是一点一滴汇集起来的力量绝对是不可限量的”</p>
+                            <p>支教带给你的，是爱。</p>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="img/hert.jpg" class="img-responsive" alt="Image Intro">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- END INTRO -->
+
+
+
+
+
+
+    </div>
+
+
+        <div class="page-content">
+            <div class="container">
+                <!-- ITEM FILTERS -->
+                <ul class="list-inline portfolio-item-filters">
+                    <li><a class="active" href="#" data-filter="*">ALL</a></li>
+                    <li><a href="#" data-filter=".design">DESIGN</a></li>
+                    <li><a href="#" data-filter=".photography">PHOTOGRAPHY</a></li>
+                    <li><a href="#" data-filter=".ui">UI</a></li>
+                    <li><a href="#" data-filter=".ux">UX</a></li>
+                </ul>
+                <!-- END ITEM FILTERS -->
+                <!-- PORTFOLIO ITEM WRAPPER -->
+                <div class="portfolio-item-wrapper">
+                    <ul class="portfolio-item-list portfolio-isotope portfolio-nospace list-col-4">
+                        <li class="portfolio-item design">
+                            <div class="overlay"></div>
+                            <div class="info">
+                                <h4 class="title">The Guitar</h4>
+                                <p class="brief-description">Graphic Design</p>
+                                <a href="#" class="btn">read more</a>
+                            </div>
+                            <div class="media-wrapper">
+                                <img src="assets/img/portfolio/800x800/work1.png" alt="This is the description">
+                            </div>
+                        </li>
+                        <li class="portfolio-item ux">
+                            <div class="overlay"></div>
+                            <div class="info">
+                                <h4 class="title">Skyscraper</h4>
+                                <p class="brief-description">UX Design</p>
+                                <a href="#" class="btn">read more</a>
+                            </div>
+                            <div class="media-wrapper">
+                                <img src="assets/img/portfolio/800x800/work3.png" alt="Portfolio Thumbnail">
+                            </div>
+                        </li>
+                        <li class="portfolio-item photography">
+                            <div class="overlay"></div>
+                            <div class="info">
+                                <h4 class="title">Heaven</h4>
+                                <p class="brief-description">Photography</p>
+                                <a href="#" class="btn">read more</a>
+                            </div>
+                            <div class="media-wrapper">
+                                <img src="assets/img/portfolio/800x800/work4.png" alt="Portfolio Thumbnail">
+                            </div>
+                        </li>
+                        <li class="portfolio-item photography ux">
+                            <div class="overlay"></div>
+                            <div class="info">
+                                <h4 class="title">Raining</h4>
+                                <p class="brief-description">Photography</p>
+                                <a href="#" class="btn">read more</a>
+                            </div>
+                            <div class="media-wrapper">
+                                <img src="assets/img/portfolio/800x800/work5.png" alt="Portfolio Thumbnail">
+                            </div>
+                        </li>
+                        <li class="portfolio-item photography ui">
+                            <div class="overlay"></div>
+                            <div class="info">
+                                <h4 class="title">The Edge</h4>
+                                <p class="brief-description">UI &amp; UX Design</p>
+                                <a href="#" class="btn">read more</a>
+                            </div>
+                            <div class="media-wrapper">
+                                <img src="assets/img/portfolio/800x800/work6.png" alt="Portfolio Thumbnail">
+                            </div>
+                        </li>
+                        <li class="portfolio-item photography">
+                            <div class="overlay"></div>
+                            <div class="info">
+                                <h4 class="title">The Light</h4>
+                                <p class="brief-description">Photography</p>
+                                <a href="#" class="btn">read more</a>
+                            </div>
+                            <div class="media-wrapper">
+                                <img src="assets/img/portfolio/800x800/work7.png" alt="Portfolio Thumbnail">
+                            </div>
+                        </li>
+                        <li class="portfolio-item photography">
+                            <div class="overlay"></div>
+                            <div class="info">
+                                <h4 class="title">Magical Tea</h4>
+                                <p class="brief-description">Photography</p>
+                                <a href="#" class="btn">read more</a>
+                            </div>
+                            <div class="media-wrapper">
+                                <img src="assets/img/portfolio/800x800/work8.png" alt="Portfolio Thumbnail">
+                            </div>
+                        </li>
+                        <li class="portfolio-item ui">
+                            <div class="overlay"></div>
+                            <div class="info">
+                                <h4 class="title">Skyscraper</h4>
+                                <p class="brief-description">UI Design</p>
+                                <a href="#" class="btn">read more</a>
+                            </div>
+                            <div class="media-wrapper">
+                                <img src="assets/img/portfolio/800x800/work3.png" alt="Portfolio Thumbnail">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- END PORTFOLIO ITEM WRAPPER -->
+            </div>
+        </div>
+        <!-- END PAGE CONTENT -->
+        <!-- FOOTER -->
+            <!-- END FOOTER -->
+
+    <!-- END WRAPPER -->
+    <!-- JAVASCRIPTS -->
+    <script src="assets/js/jquery-2.1.1.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/plugins/isotope/isotope.pkgd.js"></script>
+    <script src="assets/js/repute-scripts.js"></script>
+    <script src="assets/js/hzw-city-picker.min.js"></script>
+    <script src="assets/js/city-data.js"></script>
+    <script src="assets/js/drag.js"></script>
+    <script src="js/anime.min.js"></script>
+    <script src="js/main.js"></script>
+
+    <!--模态框-->
+    <script>
+        function sign_up(obj) {
+            $('#myModal_sign').modal('show');
+        }
+        function log_in(obj) {
+            $('#myModal_log').modal('show');
+        }
+    </script>
+    <!--城市选择框-->
+    <script>
+        var cityPicker = new HzwCityPicker({
+            data: data,
+            target: 'cityChoice',
+            valType: 'k-v',
+            hideCityInput: {
+                name: 'city',
+                id: 'city'
+
+
+            },
+            hideProvinceInput: {
+                name: 'province',
+                id: 'province'
+            },
+            callback: function(){
+
+            }
+        });
+
+        cityPicker.init();
+    </script>
+    <!--注册页面-->
+    <script>
+        // user
+        var user_Boolean = false;
+        var password_Boolean = false;
+        var varconfirm_Boolean = false;
+        var emaile_Boolean = false;
+        var Mobile_Boolean = false;
+        $('.reg_user').blur(function(){
+            if ((/^[a-z0-9_-]{4,8}$/).test($(".reg_user").val())){
+                $('.user_hint').html("✔").css("color","green");
+                user_Boolean = true;
+            }else {
+                $('.user_hint').html("×").css("color","red");
+                user_Boolean = false;
+            }
+        });
+        // password
+        $('.reg_password').blur(function(){
+            if ((/^[a-z0-9_-]{6,16}$/).test($(".reg_password").val())){
+                $('.password_hint').html("✔").css("color","green");
+                password_Boolean = true;
+            }else {
+                $('.password_hint').html("×").css("color","red");
+                password_Boolean = false;
+            }
+        });
+
+
+        // password_confirm
+        $('.reg_confirm').blur(function(){
+            if (($(".reg_password").val())==($(".reg_confirm").val())&&$(".reg_password").val()!=''){
+                $('.confirm_hint').html("✔").css("color","green");
+                varconfirm_Boolean = true;
+            }else {
+                $('.confirm_hint').html("×").css("color","red");
+                varconfirm_Boolean = false;
+            }
+        });
+
+
+        // Email
+        $('.reg_email').blur(function(){
+            if ((/^[a-z\d]+(\.[a-z\d]+)*@([\da-z](-[\da-z])?)+(\.{1,1}[a-z]+)+$/).test($(".reg_email").val())){
+                $('.email_hint').html("✔").css("color","green");
+                emaile_Boolean = true;
+            }else {
+                $('.email_hint').html("×").css("color","red");
+                emaile_Boolean = false;
+            }
+        });
+
+
+        // Mobile
+        $('.reg_mobile').blur(function(){
+            if ((/^1[34578]\d{9}$/).test($(".reg_mobile").val())){
+                $('.mobile_hint').html("✔").css("color","green");
+                Mobile_Boolean = true;
+            }else {
+                $('.mobile_hint').html("×").css("color","red");
+                Mobile_Boolean = false;
+            }
+        });
+
+
+        // click
+        $('.red_button').click(function(){
+            if(user_Boolean && password_Boolean && varconfirm_Boolean && emaile_Boolean && Mobile_Boolean == true){
+                alert("注册成功");
+                $('#myModal_sign').modal('hide');
+
+
+            }else {
+                alert("请完善信息");
+            }
+        });
+
+    </script>
+    <!--登录界面-->
+    <script>
+        var user_Bool = false;
+        var password_Bool = false;
+        $('.log_user').blur(function(){
+            if ((/^[a-z0-9_-]{4,8}$/).test($(".log_user").val())){
+                $('.user_hint_log').html("✔").css("color","green");
+                user_Bool = true;
+            }else {
+                $('.user_hint_log').html("×").css("color","red");
+                user_Bool = false;
+            }
+        });
+        $('.log_password').blur(function(){
+            if ((/^[a-z0-9_-]{6,16}$/).test($(".log_password").val())){
+                $('.password_hint_log').html("✔").css("color","green");
+                password_Boolean = true;
+            }else {
+                $('.password_hint_log').html("×").css("color","red");
+                password_Boolean = false;
+            }
+        });
+    </script>
+    <!--下滑模块-->
+    <script>
+        $('#drag').drag();
+    </script>
+<script>
+    (function() {
+        [].slice.call(document.querySelectorAll('.grid--effect-vega > .grid__item')).forEach(function(stackEl) {
+            new VegaFx(stackEl);
+        });
+        [].slice.call(document.querySelectorAll('.grid--effect-castor > .grid__item')).forEach(function(stackEl) {
+            new CastorFx(stackEl);
+        });
+        [].slice.call(document.querySelectorAll('.grid--effect-hamal > .grid__item')).forEach(function(stackEl) {
+            new HamalFx(stackEl);
+        });
+        [].slice.call(document.querySelectorAll('.grid--effect-polaris > .grid__item')).forEach(function(stackEl) {
+            new PolarisFx(stackEl);
+        });
+        [].slice.call(document.querySelectorAll('.grid--effect-alphard > .grid__item')).forEach(function(stackEl) {
+            new AlphardFx(stackEl);
+        });
+        [].slice.call(document.querySelectorAll('.grid--effect-altair > .grid__item')).forEach(function(stackEl) {
+            new AltairFx(stackEl);
+        });
+        [].slice.call(document.querySelectorAll('.grid--effect-rigel > .grid__item')).forEach(function(stackEl) {
+            new RigelFx(stackEl);
+        });
+        [].slice.call(document.querySelectorAll('.grid--effect-canopus > .grid__item')).forEach(function(stackEl) {
+            new CanopusFx(stackEl);
+        });
+        [].slice.call(document.querySelectorAll('.grid--effect-pollux > .grid__item')).forEach(function(stackEl) {
+            new PolluxFx(stackEl);
+        });
+        [].slice.call(document.querySelectorAll('.grid--effect-deneb > .grid__item')).forEach(function(stackEl) {
+            new DenebFx(stackEl);
+        });
+    })();
+</script>
+
+</body>
+
+</html>
